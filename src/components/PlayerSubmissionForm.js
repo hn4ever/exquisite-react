@@ -3,7 +3,37 @@ import PropTypes from 'prop-types';
 
 import './PlayerSubmissionForm.css';
 
-const PlayerSubmissionForm = () => {
+const PlayerSubmissionForm = (props) => {
+  const [formFields, setFormFields] = useState({
+    adj1: '',
+    noun1: '',
+    adv: '',
+    verb: '',
+    adj2: '',
+    noun2: ''
+  });
+
+
+  const onInputChange = (event) => {
+    console.log(`Changing field ${ event.target.name } to ${ event.target.value }`);
+    const newFormFields = {
+      ...formFields,
+    }
+    newFormFields[event.target.name] = event.target.value;
+    setFormFields(newFormFields);
+  }
+
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+
+    props.addLineCallback(formFields);
+
+    setFormFields({
+      fullName: '',
+      email: '',
+    });
+  };
+
   return (
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{  }</h3>
@@ -13,7 +43,7 @@ const PlayerSubmissionForm = () => {
         <div className="PlayerSubmissionForm__poem-inputs">
           <span>The</span>
     
-            {/* // Put your form inputs here... We've put in one below as an example */}
+            {/* Put your form inputs here... We've put in one below as an example */}
             <input 
             placeholder="adjective"
             type="text"/>
