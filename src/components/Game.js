@@ -36,8 +36,8 @@ const Game = () => {
     setSubmission(true);
   }
 
-  const lastRecentSubmission = lines[lines.length-1];
-
+  // const lastRecentSubmission = lines[lines.length-1];
+const lastRecentSubmission = lines[lines.length - 1]
   // const convert = (line) => {
   //   //make a method to change a single line to sentence
   // }
@@ -58,14 +58,16 @@ const Game = () => {
       <p className="Game__format-example">
         { exampleFormat }
       </p>
-
+{/* 
       {(!submission && submission.length >= 1)?
-      <RecentSubmission submission={lastRecentSubmission}/> : null}
+      <RecentSubmission submission={lastRecentSubmission}/> : null} */}
+      <RecentSubmission submission={lastRecentSubmission}/>
 
       {(submission)?
       null : <PlayerSubmissionForm index={lines.length + 1} sendSubmission={addLine} fields={FIELDS} />}
 
-      <FinalPoem isSubmitted={submission} submission={lines} revealPoem={showPoem}/>
+      
+      <FinalPoem isSubmitted={submission} submissions={lines} revealPoem={showPoem}/>
 
     </div>
   );
