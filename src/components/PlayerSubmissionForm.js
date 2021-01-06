@@ -13,9 +13,9 @@ const PlayerSubmissionForm = (props) => {
     noun2: ''
   });
 
+  
 
   const onInputChange = (event) => {
-    console.log(`Changing field ${ event.target.name } to ${ event.target.value }`);
     const newFormFields = {
       ...formFields,
     }
@@ -25,50 +25,43 @@ const PlayerSubmissionForm = (props) => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-
-    props.addLineCallback(formFields);
+    props.sendSubmission(formFields, props.field);
 
     setFormFields({
-      fullName: '',
-      email: '',
+      adj1: '',
+      noun1: '',
+      adv: '',
+      verb: '',
+      adj2: '',
+      noun2: ''
     });
   };
 
+  const formsFormat = props.fields.map((field,i) => {
+    if (field.key){
+      //input field
+      return <input 
+        key = {field.key}    
+        placeholder={field.placeholder}
+        value = {formFields[field.key]}
+        type="text"
+        onChange={onInputChange}/>
+    }
+    else {
+      // plain text
+      return <span key={i} >{field}</span>
+    }
+  })
+
+
   return (
-    <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{  }</h3>
+    <div className="PlayerSubmissionForm" onSubmit={onFormSubmit}>
+      <h3>Player Submission Form for Player #{props.index}</h3>
 
       <form className="PlayerSubmissionForm__form" >
 
         <div className="PlayerSubmissionForm__poem-inputs">
-          <span>The</span>
-    
-            {/* Put your form inputs here... We've put in one below as an example */}
-            <input 
-            placeholder="adjective"
-            type="text"/>
-          
-            <input
-            placeholder="noun"
-            type="text" />
-
-            <input
-            placeholder="adverb"
-            type="text" />
-
-            <input
-            placeholder="verb"
-            type="text" />
-
-            <span>the</span>
-            <input
-            placeholder="adjective"
-            type="text" />
-
-            <input
-            placeholder="noun"
-            type="text" />
-
+            {formsFormat}
         </div>
 
         <div className="PlayerSubmissionForm__submit">
