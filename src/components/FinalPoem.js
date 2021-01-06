@@ -3,21 +3,26 @@ import PropTypes from 'prop-types';
 import './FinalPoem.css';
 
 const FinalPoem = (props) => {
-
-  return (
-    <div className="FinalPoem">
-      {/* this part should be hidden before submission */}
-      <section className="FinalPoem__poem">
-        <h3>Final Poem</h3>
-
-      </section>
-      {/* this part should be shown before submission */}
+  if (props.isSubmitted){
+    return(
+      <div className="FinalPoem">
+          <section className="FinalPoem__poem">
+          <h3>Final Poem</h3>
+          {props.submission.map((submission, i) => (
+            <p key={i}>{submission}</p>
+          ))}
+          </section></div>
+    )
+  } else {
+    return(
+      <div className="FinalPoem">
       <div className="FinalPoem__reveal-btn-container">
-        <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
+        <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" onClick={props.revealPoem}/>
       </div>
     </div>
-  );
-}
+    );
+  };
+};
 
 FinalPoem.propTypes = {
   isSubmitted: PropTypes.bool.isRequired,//hid recent submission and player submission

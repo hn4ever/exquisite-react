@@ -6,6 +6,7 @@ import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
   const [lines, setLines] = useState([])
+  const [submission, setSubmission] = useState(false)
 
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
@@ -15,12 +16,27 @@ const Game = () => {
     }
   }).join(' ');
 
-  makeSentence = (submission) =>
-  // const addLine = (words) => {
-  //   const newLines = [...lines, words]
-  //   setLines(newLines)
+  const makeSentence = (words) => {
+    return FIELDS.map((field) => {
+      if (field.key) {
+        return words[field.key];
+      } else {
+        return field;
+      }
+    }).join(' ')
+  }
 
-  // }
+  const addLine = (words) => {
+    const newLines = [...lines]
+    newLines.push(makeSentence(words))
+    setLines(newLines)
+  }
+
+  const showPoem = () => {
+    setSubmission(true);
+  }
+
+  const lastRecentSubmission = lines[lines.length-1];
 
   // const convert = (line) => {
   //   //make a method to change a single line to sentence
@@ -43,11 +59,13 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      {/* <RecentSubmission submission={allSentences//put the last submission maybe if statement for first player}/> */}
+      {(!submission && submission.length >= 1)?
+      <RecentSubmission submission={lastRecentSubmission}/> : null}
 
-      <PlayerSubmissionForm index={lines.length + 1} sendSubmission={addLine} fields={FIELDS} />
+      {(submission)?
+      null : <PlayerSubmissionForm index={lines.length + 1} sendSubmission={addLine} fields={FIELDS} />}
 
-      <FinalPoem />
+      <FinalPoem isSubmitted={submission} submission={lines} revealPoem={showPoem}/>
 
     </div>
   );
