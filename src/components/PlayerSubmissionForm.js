@@ -17,7 +17,7 @@ const PlayerSubmissionForm = (props) => {
 
   const onInputChange = (event) => {
     const newFormFields = {
-      ...formFields,
+      ...formFields
     }
     newFormFields[event.target.name] = event.target.value;
     setFormFields(newFormFields);
@@ -37,21 +37,39 @@ const PlayerSubmissionForm = (props) => {
     });
   };
 
-  const formsFormat = props.fields.map((field,i) => {
+  // const formsFormat = props.fields.map((field,i) => {
+  //   if (field.key){
+  //     //input field
+  //     return <input 
+  //       key = {field.key}    
+  //       placeholder={field.placeholder}
+  //       value = {formFields[field.key]}
+  //       type="text"
+  //       onChange={onInputChange}/>
+  //   }
+  //   else {
+  //     // plain text
+  //     return <span key={i} >{field}</span>
+  //   }
+  // })
+
+  const formsFormat = (fields, formFields) => {
+    let newFields = [];
+
+    for(const field of fields)
     if (field.key){
-      //input field
-      return <input 
-        key = {field.key}    
+      newFields.push(<input 
+        key = {field.key}
         placeholder={field.placeholder}
         value = {formFields[field.key]}
         type="text"
-        onChange={onInputChange}/>
+        onChange={onInputChange}/>)
     }
     else {
-      // plain text
-      return <span key={i} >{field}</span>
+      newFields.push(field)
     }
-  })
+    return newFields;
+  }
 
 
   return (
@@ -61,7 +79,7 @@ const PlayerSubmissionForm = (props) => {
       <form className="PlayerSubmissionForm__form" >
 
         <div className="PlayerSubmissionForm__poem-inputs">
-            {formsFormat}
+            {formsFormat(props.fields, FormData)}
         </div>
 
         <div className="PlayerSubmissionForm__submit">
