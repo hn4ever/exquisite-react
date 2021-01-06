@@ -49,7 +49,9 @@ const PlayerSubmissionForm = (props) => {
         placeholder={field.placeholder}
         value = {formFields[field.key]}
         type="text"
-        onChange={onInputChange}/>)
+        onChange={onInputChange}
+        className={formFields[field.key] ? '' : 'PlayerSubmissionFormt__input'}
+        />)
     }
     else {
       newFields.push(field)
@@ -64,11 +66,9 @@ const PlayerSubmissionForm = (props) => {
       <h3>Player Submission Form for Player #{props.index}</h3>
 
       <form className="PlayerSubmissionForm__form" >
-
         <div className="PlayerSubmissionForm__poem-inputs">
         {formsFormat(props.fields)}
         </div>
-
         <div className="PlayerSubmissionForm__submit">
           <input type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" />
         </div>
