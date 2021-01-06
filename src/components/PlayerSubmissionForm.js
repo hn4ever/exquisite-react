@@ -24,8 +24,9 @@ const PlayerSubmissionForm = (props) => {
   }
 
   const onFormSubmit = (event) => {
+    console.log(props.sendSubmission.name)
     event.preventDefault();
-    props.sendSubmission(formFields, props.field);
+    props.sendSubmission(formFields);
 
     setFormFields({
       adj1: '',
@@ -53,13 +54,14 @@ const PlayerSubmissionForm = (props) => {
   //   }
   // })
 
-  const formsFormat = (fields, formFields) => {
+  const formsFormat = (fields) => {
     let newFields = [];
 
     for(const field of fields)
     if (field.key){
       newFields.push(<input 
         key = {field.key}
+        name = {field.key}
         placeholder={field.placeholder}
         value = {formFields[field.key]}
         type="text"
@@ -72,6 +74,7 @@ const PlayerSubmissionForm = (props) => {
   }
 
 
+
   return (
     <div className="PlayerSubmissionForm" onSubmit={onFormSubmit}>
       <h3>Player Submission Form for Player #{props.index}</h3>
@@ -79,7 +82,7 @@ const PlayerSubmissionForm = (props) => {
       <form className="PlayerSubmissionForm__form" >
 
         <div className="PlayerSubmissionForm__poem-inputs">
-            {formsFormat(props.fields, FormData)}
+        {formsFormat(props.fields)}
         </div>
 
         <div className="PlayerSubmissionForm__submit">

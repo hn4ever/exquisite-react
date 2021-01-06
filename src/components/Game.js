@@ -22,6 +22,15 @@ const Game = () => {
 
   }
 
+  const convert = (line) => {
+    //make a method to change a single line to sentence
+  }
+
+  const allSentences = //map all addline and 
+  lines.map //each do convert
+  //save it 'it will saved as all sentences'
+
+
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -34,7 +43,7 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission submission={allSentences//put the last submission maybe if statement for first player}/>
 
       <PlayerSubmissionForm index={lines.length + 1} sendSubmission={addLine} fields={FIELDS} />
 
