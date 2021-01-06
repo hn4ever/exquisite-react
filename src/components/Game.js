@@ -37,15 +37,7 @@ const Game = () => {
   }
 
   const lastRecentSubmission = lines[lines.length - 1]
-  // const convert = (line) => {
-  //   //make a method to change a single line to sentence
-  // }
-
-  // const allSentences = //map all addline and 
-  // lines.map //each do convert
-  // //save it 'it will saved as all sentences'
-
-
+  
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -57,7 +49,6 @@ const Game = () => {
       <p className="Game__format-example">
         { exampleFormat }
       </p> 
-     
       {(!submission && lastRecentSubmission)?
       <RecentSubmission submission={lastRecentSubmission}/> : null}
 

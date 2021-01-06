@@ -25,9 +25,9 @@ const FinalPoem = (props) => {
 };
 
 FinalPoem.propTypes = {
-  isSubmitted: PropTypes.bool.isRequired,//hid recent submission and player submission
+  isSubmitted: PropTypes.bool.isRequired,
   submissions: PropTypes.arrayOf(PropTypes.string).isRequired,
-  revealPoem: PropTypes.func.isRequired,// callback from the game
+  revealPoem: PropTypes.func.isRequired,
 };
 
 export default FinalPoem;

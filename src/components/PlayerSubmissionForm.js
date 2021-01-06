@@ -38,22 +38,6 @@ const PlayerSubmissionForm = (props) => {
     });
   };
 
-  // const formsFormat = props.fields.map((field,i) => {
-  //   if (field.key){
-  //     //input field
-  //     return <input 
-  //       key = {field.key}    
-  //       placeholder={field.placeholder}
-  //       value = {formFields[field.key]}
-  //       type="text"
-  //       onChange={onInputChange}/>
-  //   }
-  //   else {
-  //     // plain text
-  //     return <span key={i} >{field}</span>
-  //   }
-  // })
-
   const formsFormat = (fields) => {
     let newFields = [];
 
