@@ -15,20 +15,20 @@ const Game = () => {
     }
   }).join(' ');
 
+  makeSentence = (submission) =>
+  // const addLine = (words) => {
+  //   const newLines = [...lines, words]
+  //   setLines(newLines)
 
-  const addLine = (words) => {
-    const newLines = [...lines, words]
-    setLines(newLines)
+  // }
 
-  }
+  // const convert = (line) => {
+  //   //make a method to change a single line to sentence
+  // }
 
-  const convert = (line) => {
-    //make a method to change a single line to sentence
-  }
-
-  const allSentences = //map all addline and 
-  lines.map //each do convert
-  //save it 'it will saved as all sentences'
+  // const allSentences = //map all addline and 
+  // lines.map //each do convert
+  // //save it 'it will saved as all sentences'
 
 
   return (
@@ -43,7 +43,7 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission submission={allSentences//put the last submission maybe if statement for first player}/>
+      {/* <RecentSubmission submission={allSentences//put the last submission maybe if statement for first player}/> */}
 
       <PlayerSubmissionForm index={lines.length + 1} sendSubmission={addLine} fields={FIELDS} />
 
